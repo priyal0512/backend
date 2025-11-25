@@ -149,3 +149,11 @@
 2025-11-26T00:24:05.499865 - Document classified (heuristic): startup_equity
 2025-11-26T00:24:05.500411 - Regex extracted fields: ['Company Name', 'Investor', 'Investment Amount', 'Equity to be Issued']
 2025-11-26T00:24:05.593606 - AI extraction error: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2025-11-26T00:45:38.430287 - Extracted 39143 chars from PDF: D:\changu-mangu\backend\routes\..\uploads\uploaded_9695f581baf5483e873624bcae264ea4.pdf
+2025-11-26T00:45:38.433095 - Document classified (heuristic): structured_note
+2025-11-26T00:45:38.441296 - Regex extracted fields: ['Investor', 'Equity to be Issued', 'Issuer', 'ISIN', 'Issue Date', 'Redemption Date', 'Underlying Asset', 'Strike Level', 'Autocall Barrier', 'Knock-in Barrier', 'Calculation Amount', 'Coupon Rate']
+2025-11-26T00:45:38.626649 - AI extraction error: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2025-11-26T00:45:51.826827 - Extracted 785 chars from PDF: D:\changu-mangu\backend\routes\..\uploads\uploaded_b9af867227734b69972cdc78833988cb.pdf
+2025-11-26T00:45:51.827286 - Document classified (heuristic): startup_equity
+2025-11-26T00:45:51.827656 - Regex extracted fields: ['Company Name', 'Investor', 'Investment Amount', 'Equity to be Issued']
+2025-11-26T00:45:51.917320 - AI extraction error: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
