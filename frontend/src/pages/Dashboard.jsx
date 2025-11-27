@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import StatsOverview from '../components/features/StatsOverview';
 import FileUpload from '../components/features/FileUpload';
 import { useNavigate } from 'react-router-dom';
+import { dataService } from '../services/dataService';
 
 const Dashboard = () => {
   const [stats, setStats] = useState({
@@ -10,6 +11,7 @@ const Dashboard = () => {
     successRate: 0,
     totalIssues: 0,
   });
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   const handleUploadSuccess = (result) => {
@@ -19,15 +21,23 @@ const Dashboard = () => {
     }
   };
 
-  // In a real app, you would fetch stats from an API
-  // For now, we'll use placeholder data
+  const fetchStats = async () => {
+    try {
+      setLoading(true);
+      const data = await dataService.getStats();
+      setStats(data);
+    } catch (error) {
+      console.error('Failed to fetch stats:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
-    // This would be replaced with an actual API call
-    // const fetchStats = async () => {
-    //   const data = await dashboardService.getStats();
-    //   setStats(data);
-    // };
-    // fetchStats();
+    fetchStats();
+    // Refresh stats every 5 seconds
+    const interval = setInterval(fetchStats, 5000);
+    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -37,7 +47,7 @@ const Dashboard = () => {
         <p className="text-gray-600">Welcome to the Term Sheet Validation System</p>
       </div>
 
-      <StatsOverview stats={stats} />
+      <StatsOverview stats={stats} loading={loading} />
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <FileUpload onUploadSuccess={handleUploadSuccess} />

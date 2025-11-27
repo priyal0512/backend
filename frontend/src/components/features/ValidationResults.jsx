@@ -77,41 +77,32 @@ const ValidationResults = ({ validationData }) => {
             </div>
           </div>
 
-          {/* Summary */}
+          {/* Summary Stats */}
           <div>
             <h3 className="text-lg font-semibold text-gray-700 mb-4">Summary</h3>
-            <p className="text-gray-600 leading-relaxed">{summary || 'No summary available'}</p>
+            <div className="space-y-4">
+              {summary && Object.entries(summary).map(([key, value]) => (
+                <div key={key} className="flex justify-between items-center pb-3 border-b border-gray-200">
+                  <span className="text-gray-600 capitalize">{key.replace(/_/g, ' ')}</span>
+                  <span className="font-semibold text-gray-900">{value}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Issues */}
+      {/* Issues Section */}
       {issues && issues.length > 0 && (
         <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-          <h3 className="text-lg font-semibold text-gray-700 mb-4">
-            Issues Found ({issues.length})
-          </h3>
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">Issues Found</h2>
           <div className="space-y-3">
             {issues.map((issue, index) => (
-              <div
-                key={index}
-                className="bg-red-50 border border-red-200 rounded-lg p-4"
-              >
-                <div className="flex items-start">
-                  <FiAlertCircle className="text-red-600 mt-1 mr-3 flex-shrink-0" />
-                  <div>
-                    <p className="font-medium text-red-900">
-                      {issue.field || issue.title || `Issue ${index + 1}`}
-                    </p>
-                    <p className="text-sm text-red-700 mt-1">
-                      {issue.message || issue.description || 'Issue detected'}
-                    </p>
-                    {issue.severity && (
-                      <span className="inline-block mt-2 px-2 py-1 bg-red-200 text-red-800 text-xs rounded">
-                        {issue.severity}
-                      </span>
-                    )}
-                  </div>
+              <div key={index} className="flex items-start space-x-3 p-3 bg-red-50 rounded-lg">
+                <FiAlertCircle className="text-red-600 mt-1 flex-shrink-0" />
+                <div className="flex-1">
+                  <p className="text-gray-900 font-medium">{issue.field || 'Field'}</p>
+                  <p className="text-gray-600 text-sm">{issue.message || issue}</p>
                 </div>
               </div>
             ))}
@@ -120,16 +111,14 @@ const ValidationResults = ({ validationData }) => {
       )}
 
       {/* Validated Fields */}
-      {validated_fields && Object.keys(validated_fields).length > 0 && (
+      {validated_fields && (
         <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-          <h3 className="text-lg font-semibold text-gray-700 mb-4">Validated Fields</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {Object.entries(validated_fields).map(([key, value]) => (
-              <div key={key} className="border border-gray-200 rounded-lg p-3">
-                <p className="text-sm font-medium text-gray-600 uppercase">{key}</p>
-                <p className="text-gray-900 mt-1">
-                  {typeof value === 'object' ? JSON.stringify(value) : String(value)}
-                </p>
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">Validated Fields</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {Object.entries(validated_fields).map(([field, value]) => (
+              <div key={field} className="p-4 bg-gray-50 rounded-lg">
+                <p className="text-gray-600 text-sm capitalize">{field.replace(/_/g, ' ')}</p>
+                <p className="text-gray-900 font-semibold mt-1">{String(value)}</p>
               </div>
             ))}
           </div>
@@ -140,4 +129,3 @@ const ValidationResults = ({ validationData }) => {
 };
 
 export default ValidationResults;
-

@@ -9,6 +9,7 @@ const ReportsExport = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
+  const [reportGenerated, setReportGenerated] = useState(false);
 
   const handleExport = async () => {
     if (!validationId.trim()) {
@@ -24,12 +25,30 @@ const ReportsExport = () => {
       const result = await reportService.exportReport(validationId);
       if (result.report_link) {
         setSuccess(`Report generated successfully!`);
-        // Open the report link in a new tab
-        const reportUrl = `${import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000'}${result.report_link}`;
-        window.open(reportUrl, '_blank');
+        setReportGenerated(true);
       }
     } catch (err) {
       setError(err.response?.data?.detail || 'Failed to export report. Please check the validation ID.');
+      setReportGenerated(false);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleDownload = async () => {
+    if (!validationId.trim()) {
+      setError('Please enter a validation ID');
+      return;
+    }
+
+    setLoading(true);
+    setError(null);
+
+    try {
+      await reportService.downloadReport(validationId);
+      setSuccess('Report downloaded successfully!');
+    } catch (err) {
+      setError(err.response?.data?.detail || 'Failed to download report.');
     } finally {
       setLoading(false);
     }
@@ -67,23 +86,43 @@ const ReportsExport = () => {
           </p>
         </div>
 
-        <button
-          onClick={handleExport}
-          disabled={loading || !validationId.trim()}
-          className="w-full px-4 py-3 bg-primary-600 text-white rounded-lg font-medium hover:bg-primary-700 disabled:bg-primary-400 disabled:cursor-not-allowed transition-colors flex items-center justify-center space-x-2"
-        >
-          {loading ? (
-            <>
-              <LoadingSpinner size="sm" />
-              <span>Generating Report...</span>
-            </>
-          ) : (
-            <>
-              <FiDownload />
-              <span>Export Report</span>
-            </>
-          )}
-        </button>
+        <div className="flex gap-3">
+          <button
+            onClick={handleExport}
+            disabled={loading || !validationId.trim()}
+            className="flex-1 px-4 py-3 bg-primary-600 text-white rounded-lg font-medium hover:bg-primary-700 disabled:bg-primary-400 disabled:cursor-not-allowed transition-colors flex items-center justify-center space-x-2"
+          >
+            {loading && !reportGenerated ? (
+              <>
+                <LoadingSpinner size="sm" />
+                <span>Generating...</span>
+              </>
+            ) : (
+              <>
+                <FiFileText />
+                <span>Generate Report</span>
+              </>
+            )}
+          </button>
+
+          <button
+            onClick={handleDownload}
+            disabled={loading || !validationId.trim() || !reportGenerated}
+            className="flex-1 px-4 py-3 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 disabled:bg-green-400 disabled:cursor-not-allowed transition-colors flex items-center justify-center space-x-2"
+          >
+            {loading && reportGenerated ? (
+              <>
+                <LoadingSpinner size="sm" />
+                <span>Downloading...</span>
+              </>
+            ) : (
+              <>
+                <FiDownload />
+                <span>Download JSON</span>
+              </>
+            )}
+          </button>
+        </div>
       </div>
     </div>
   );

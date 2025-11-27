@@ -1,0 +1,19 @@
+{
+    "_id": "69280e024bf8f4230dc1ba19",
+    "upload_id": "69280dff4bf8f4230dc1ba18",
+    "document_type": "unknown",
+    "validated_fields": {
+        "Investor": "nor as to the future",
+        "Equity to be Issued": "Index, in the event that the Index",
+        "Issuer": "AND THE ISSUE",
+        "ISIN": "XS2300719858",
+        "Issue Date": "3 September 2021",
+        "Redemption Date": "3 September 2026"
+    },
+    "issues": [
+        "Missing required fields: ['Company Name', 'Date', 'Investment Amount', 'Valuation (Pre-Money)', 'Valuation (Post-Money)']"
+    ],
+    "score": 55,
+    "summary": "6/11 required fields present.",
+    "status": "Failed \u274c"
+}
