@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { FiSend, FiMessageSquare } from 'react-icons/fi';
+import ReactMarkdown from 'react-markdown';
 import { chatbotService } from '../../services/chatbotService';
 import LoadingSpinner from '../shared/LoadingSpinner';
 import ErrorAlert from '../shared/ErrorAlert';
@@ -59,6 +60,24 @@ const Chatbot = () => {
     }
   };
 
+  const markdownComponents = {
+    h1: ({ children }) => <h1 className="text-lg font-bold mt-3 mb-2">{children}</h1>,
+    h2: ({ children }) => <h2 className="text-base font-bold mt-2 mb-1">{children}</h2>,
+    h3: ({ children }) => <h3 className="text-sm font-bold mt-2 mb-1">{children}</h3>,
+    p: ({ children }) => <p className="mb-2">{children}</p>,
+    ul: ({ children }) => <ul className="list-disc list-inside mb-2 ml-2">{children}</ul>,
+    ol: ({ children }) => <ol className="list-decimal list-inside mb-2 ml-2">{children}</ol>,
+    li: ({ children }) => <li className="mb-1">{children}</li>,
+    strong: ({ children }) => <strong className="font-semibold">{children}</strong>,
+    em: ({ children }) => <em className="italic">{children}</em>,
+    code: ({ children }) => (
+      <code className="bg-gray-200 px-1 py-0.5 rounded text-sm font-mono">{children}</code>
+    ),
+    pre: ({ children }) => (
+      <pre className="bg-gray-200 p-2 rounded mb-2 overflow-x-auto">{children}</pre>
+    ),
+  };
+
   return (
     <div className="bg-white rounded-lg shadow-sm border border-gray-200 flex flex-col h-[600px]">
       <div className="p-4 border-b border-gray-200 flex items-center space-x-3">
@@ -85,7 +104,15 @@ const Chatbot = () => {
                   : 'bg-gray-100 text-gray-900'
               }`}
             >
-              <p className="whitespace-pre-wrap">{message.content}</p>
+              {message.role === 'user' ? (
+                <p className="whitespace-pre-wrap">{message.content}</p>
+              ) : (
+                <div className="prose prose-sm max-w-none">
+                  <ReactMarkdown components={markdownComponents}>
+                    {message.content}
+                  </ReactMarkdown>
+                </div>
+              )}
             </div>
           </div>
         ))}
