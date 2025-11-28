@@ -5,6 +5,7 @@ import {
   FiCheckCircle,
   FiFileText,
   FiMessageSquare,
+  FiGitMerge,      // ⭐ NEW ICON
 } from 'react-icons/fi';
 
 const Sidebar = () => {
@@ -14,6 +15,7 @@ const Sidebar = () => {
     { path: '/validations', icon: FiCheckCircle, label: 'Validations' },
     { path: '/reports', icon: FiFileText, label: 'Reports' },
     { path: '/chatbot', icon: FiMessageSquare, label: 'Chatbot' },
+    { path: '/compare', icon: FiGitMerge, label: 'Compare' },  // ⭐ FIXED
   ];
 
   return (
@@ -47,4 +49,3 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
-

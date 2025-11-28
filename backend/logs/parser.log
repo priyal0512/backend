@@ -196,3 +196,23 @@
 2025-11-27T19:35:32.126145 - Document classified (heuristic): structured_note
 2025-11-27T19:35:32.133035 - Regex extracted fields: ['Investor', 'Equity to be Issued', 'Issuer', 'ISIN', 'Issue Date', 'Redemption Date', 'Underlying Asset', 'Strike Level', 'Autocall Barrier', 'Knock-in Barrier', 'Calculation Amount', 'Coupon Rate']
 2025-11-27T19:35:32.419941 - AI extraction error: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2025-11-27T20:19:12.360249 - Extracted 39143 chars from PDF: C:\Users\HP\Desktop\changu-mangu\backend\routes\..\uploads\uploaded_a33670c2bf504a0bbf8e4a9863b870f8.pdf
+2025-11-27T20:19:12.369284 - Document classified (heuristic): structured_note
+2025-11-27T20:19:12.374684 - Regex extracted fields: ['Investor', 'Equity to be Issued', 'Issuer', 'ISIN', 'Issue Date', 'Redemption Date', 'Underlying Asset', 'Strike Level', 'Autocall Barrier', 'Knock-in Barrier', 'Calculation Amount', 'Coupon Rate']
+2025-11-27T20:19:13.048866 - AI extraction error: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2025-11-28T02:00:37.515835 - Extracted 39143 chars from PDF: C:\Users\HP\Desktop\changu-mangu\backend\routes\..\uploads\uploaded_6771c1c7ded04f80a982767e7a3c4480.pdf
+2025-11-28T02:00:37.532543 - Document classified (heuristic): structured_note
+2025-11-28T02:00:37.604762 - Regex extracted fields: ['Investor', 'Equity to be Issued', 'Issuer', 'ISIN', 'Issue Date', 'Redemption Date', 'Underlying Asset', 'Strike Level', 'Autocall Barrier', 'Knock-in Barrier', 'Calculation Amount', 'Coupon Rate']
+2025-11-28T02:00:39.614002 - AI extraction error: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2025-11-28T02:20:25.102784 - Extracted 39143 chars from PDF: C:\Users\HP\Desktop\changu-mangu\backend\routes\..\uploads\uploaded_8b1c55754d894479a412b6a0f83ba0ec.pdf
+2025-11-28T02:20:25.112344 - Document classified (heuristic): structured_note
+2025-11-28T02:20:25.112344 - Regex extracted fields: ['Investor', 'Equity to be Issued', 'Issuer', 'ISIN', 'Issue Date', 'Redemption Date', 'Underlying Asset', 'Strike Level', 'Autocall Barrier', 'Knock-in Barrier', 'Calculation Amount', 'Coupon Rate']
+2025-11-28T02:20:25.684757 - AI extraction error: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2025-11-28T14:22:54.819224 - Extracted 39143 chars from PDF: C:\Users\HP\Desktop\changu-mangu\backend\routes\..\uploads\uploaded_4bdc8b8d73e24d1dbffbd70debdd079c.pdf
+2025-11-28T14:22:54.821187 - Document classified (heuristic): structured_note
+2025-11-28T14:22:54.825805 - Regex extracted fields: ['Investor', 'Equity to be Issued', 'Issuer', 'ISIN', 'Issue Date', 'Redemption Date', 'Underlying Asset', 'Strike Level', 'Autocall Barrier', 'Knock-in Barrier', 'Calculation Amount', 'Coupon Rate']
+2025-11-28T14:22:55.655414 - AI extraction error: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2025-11-28T14:25:59.212834 - Extracted 39143 chars from PDF: C:\Users\HP\Desktop\changu-mangu\backend\routes\..\uploads\uploaded_e3c8593aad6c401a880904ba8b2acef4.pdf
+2025-11-28T14:25:59.212834 - Document classified (heuristic): structured_note
+2025-11-28T14:25:59.212834 - Regex extracted fields: ['Investor', 'Equity to be Issued', 'Issuer', 'ISIN', 'Issue Date', 'Redemption Date', 'Underlying Asset', 'Strike Level', 'Autocall Barrier', 'Knock-in Barrier', 'Calculation Amount', 'Coupon Rate']
+2025-11-28T14:25:59.441585 - AI extraction error: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
